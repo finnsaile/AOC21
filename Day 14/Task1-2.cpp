@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <map>
+#include <unordered_map>
 #include <algorithm>
 #include <limits>
 
@@ -20,7 +20,7 @@ int main()
     ifstream file("log.txt");
     string in, polymer_template;
     getline(file, polymer_template);
-    map<string, Result> rule_map;
+    unordered_map<string, Result> rule_map;
     int64_t char_counter[25], max_count = 0, min_count = __INT64_MAX__;
 
     for(int32_t i = 0; i < 25; i++)
@@ -57,7 +57,6 @@ int main()
             elem.second.new_count = 0;
         }
     }
-
 
     for(int64_t i: char_counter)
     {
