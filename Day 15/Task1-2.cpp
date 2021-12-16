@@ -13,7 +13,7 @@ typedef pair<int64_t, int64_t> iPair;
 
 struct Node
 {
-    Node(int64_t _cost, int64_t _value, iPair _cord): cost {_cost}, cord {_cord},  value {_value}{}
+    Node(const int64_t _cost, const int64_t _value, const iPair _cord): cost {_cost}, cord {_cord},  value {_value}{}
     int64_t value; 
     int64_t cost;
     iPair cord;
@@ -32,7 +32,7 @@ int64_t dijkstra(vector<vector<Node>>& grid, const int64_t max_size)
     //priority queue (min-heap)
     priority_queue<Node, vector<Node>, Comparator> to_visit;
     //array containing coordinates of potential neighbors
-    int64_t neighbors[4][2] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    const int64_t neighbors[4][2] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
 
     //put start point in queue
     to_visit.emplace(grid[0][0]);
@@ -41,7 +41,7 @@ int64_t dijkstra(vector<vector<Node>>& grid, const int64_t max_size)
     while(!to_visit.empty())
     {
         //get values from element with smallest cost in queue
-        int64_t cost = to_visit.top().cost, x = to_visit.top().cord.first, y = to_visit.top().cord.second;
+        const int64_t cost = to_visit.top().cost, x = to_visit.top().cord.first, y = to_visit.top().cord.second;
         //remove element from queue
         to_visit.pop();
         //return cost if end has been reached
@@ -52,7 +52,7 @@ int64_t dijkstra(vector<vector<Node>>& grid, const int64_t max_size)
         for(auto n: neighbors) 
         {   
             //calculate coordinates of neighbor
-            int64_t new_x = n[0] + x, new_y = n[1] + y;
+            const int64_t new_x = n[0] + x, new_y = n[1] + y;
             //skip neighbor if node has been marked or if coordinates are out of bound
             if (new_x < 0 || new_x >= max_size || new_y < 0 || new_y >= max_size || grid[new_x][new_y].value == -1)
                 continue;
