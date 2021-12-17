@@ -40,12 +40,12 @@ void print_grid(const vector<vector<Node>>& grid)
         {
             if(node.marked)
                 //cout << YELLOW << node.value << RESET;
-                cout << "🟨";
+                cout << "🟥";
             else if(node.value == 0)
                 //cout << node.value;
-                cout << "🟥";
+                cout << "⬛️";
             else
-                cout << "🟩";
+                cout << "⬜️";
         }
         cout << '\n';
     }
@@ -130,7 +130,7 @@ int64_t dijkstra(vector<vector<Node>>& grid, const iPair start = {0, 0}, iPair e
 
 int main()
 {
-    ifstream file("log2.txt");
+    ifstream file("log.txt");
     string in;
     int64_t temp_value, height, width;
     vector<vector<Node>> grid;
@@ -161,9 +161,9 @@ int main()
     }
 
     cout << "Part 1: " << dijkstra(grid) << '\n';
-    print_grid(grid);
+    //print_grid(grid);
     //call function for Part 1 and 2
-    //cout << "Part 2: " << dijkstra(big_grid) << endl;
+    cout << "Part 2: " << dijkstra(big_grid) << endl;
     //print_grid(big_grid);
     return 0;
 }
