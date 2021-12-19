@@ -207,7 +207,6 @@ int main()
 
     getline(file, in);
     Node::root = parse_input(in, -1);
-    
     while(getline(file, in))
     {
         new_root = new Node();
@@ -285,42 +284,6 @@ int main()
             delete Node::root->right_child;
             delete Node::root->left_child;
         }
-
-    }
-
-    for(int i = 0; i < number_string.size(); i++)
-    {
-        for(int j = 0; j < number_string.size(); j++)
-        {
-            line1 = number_string[i];
-            line2 = number_string[j];
-            Node::root->left_child = parse_input(line1, 0);
-            Node::root->left_child->parent = Node::root;
-            Node::root->right_child = parse_input(line2, 0);
-            Node::root->right_child->parent = Node::root;
-
-            while(true)
-            {
-                if(Node::root->explode())
-                {
-                    continue;
-                }
-                else if(Node::root->split())
-                {
-                    continue;
-                }
-                else 
-                    break;
-            }
-
-            temp = Node::root->calculate_magnitude();
-            if(temp > max_magnitude)
-                max_magnitude = temp;
-            
-            delete Node::root->right_child;
-            delete Node::root->left_child;
-        }
-
     }
 
     cout << "Part 2: " << max_magnitude << endl;
