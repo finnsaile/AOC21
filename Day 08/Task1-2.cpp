@@ -133,6 +133,7 @@ int main()
         sum += display_vec.back().get_sum_of_t1();
         sum2 += display_vec.back().get_sum_of_t2();
     }
+    
     cout << "Task1: " << sum << endl;
     cout << "Task2: " << sum2 << endl;
     input.close();
